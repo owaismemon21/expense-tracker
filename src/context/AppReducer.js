@@ -1,9 +1,10 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default (state, action) => {
   switch(action.type) {
-    case 'Add':
+    case 'ADD':
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions]
+        transactions: [...state.transactions, action.payload]
       }
     case 'DELETE':
       return {

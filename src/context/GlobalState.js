@@ -27,10 +27,18 @@ export const TransactionProvider = ({children}) => {
   }
 
   function addTrasaction(transaction) {
-    dispatch({
-      type: 'ADD',
-      payload: transaction
-    });
+    if(transaction.desc == undefined || transaction.desc == null || transaction.desc === '') {
+      alert('Please add description to proceed.');
+      return;
+    } else if(isNaN(transaction.amount) || transaction.amount === 0) {
+      alert('Amount should not be 0 or blank.');
+      return;
+    } else {
+      dispatch({
+        type: 'ADD',
+        payload: transaction
+      });
+    }
   }
 
   return (
